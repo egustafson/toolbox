@@ -5,6 +5,7 @@ Usage:  k-debug.py <host>
 
 from kafka import SimpleProducer, KafkaClient
 import logging
+import sys
 
 logging.basicConfig()
 
