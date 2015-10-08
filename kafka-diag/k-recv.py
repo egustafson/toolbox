@@ -9,7 +9,11 @@ import sys
 
 logging.basicConfig()
 
-consumer = KafkaConsumer(b'my-topic',
+topic = b'my-topic'
+if len(sys.argv) > 2:
+    topic = sys.argv[2]
+
+consumer = KafkaConsumer(topic,
                          group_id='my_group',
                          bootstrap_servers=[sys.argv[1] + ':9092'])
 

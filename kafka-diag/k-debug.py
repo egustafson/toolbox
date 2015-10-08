@@ -4,6 +4,7 @@ Usage:  k-debug.py <host>
 """
 
 from kafka import SimpleProducer, KafkaClient
+
 import logging
 import sys
 
@@ -12,7 +13,7 @@ logging.basicConfig()
 kafka = KafkaClient(sys.argv[1] + ':9092')
 #producer = SimpleProducer(kafka)
 
-#kafka.ensure_topic_exists(b'my-topic')
+kafka.ensure_topic_exists(b'picasso-stackato-logs')
 
 print("Client:  {0!r}".format(kafka))
 md = kafka.send_metadata_request()

@@ -9,12 +9,16 @@ import sys
 
 logging.basicConfig()
 
+topic = b'my-topic'
+if len(sys.argv) > 2:
+    topic = sys.argv[2]
+
 kafka = KafkaClient(sys.argv[1] + ':9092')
-kafka.ensure_topic_exists(b'my-topic')
+#kafka.ensure_topic_exists(topic)
 
 producer = SimpleProducer(kafka)
-producer.send_messages(b'my-topic', b'some message')
-producer.send_messages(b'my-topic', b'this method', b'is veriadic')
+producer.send_messages(topic, b'some message')
+producer.send_messages(topic, b'this method', b'is veriadic')
 
 print("done.")
 
